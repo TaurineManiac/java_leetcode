@@ -26,7 +26,7 @@ public class ContinuousSubarraySum {
 class SolOfContinuousSubarraySum {
     public static void main(String[] args) {
         ContinuousSubarraySum cs = new ContinuousSubarraySum();
-        int[] nums = {0};
-        System.out.println(cs.checkSubarraySum(nums, 1));
+        int[] nums = {1,2,8,2,4,9,6};
+        System.out.println(cs.checkSubarraySum(nums, 6));
     }
 }
