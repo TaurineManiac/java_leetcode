@@ -33,7 +33,7 @@ public class ThreeSum {
     }
 }
 
-class solOfThreeSum{
+class SolOfThreeSum{
     public static void main(String[] args) {
         ThreeSum threeSum = new ThreeSum();
         List<List<Integer>> result = threeSum.threeSum(new int[]{0,0,0});
