@@ -14,7 +14,7 @@ public class ThreeSumClosest {
             int k = nums.length-1;
             while(j<k){
                 int sum = nums[i] + nums[j] + nums[k];
-    
+
                 if(Math.abs(sum-target) < Math.abs(result-target)){
                     result = sum;
                 }
@@ -38,7 +38,7 @@ public class ThreeSumClosest {
 class SolThreeSumClosest {
     public static void main(String[] args) {
         ThreeSumClosest threeSumClosest = new ThreeSumClosest();
-        int[] nums = {0,0,0};
-        System.out.println(threeSumClosest.threeSumClosest(nums,1));
+        int[] nums = {4,0,5,-5,3,3,0,-4,-5};
+        System.out.println(threeSumClosest.threeSumClosest(nums,-2));
     }
 }
