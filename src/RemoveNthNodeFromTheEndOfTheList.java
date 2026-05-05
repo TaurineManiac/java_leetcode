@@ -7,7 +7,7 @@ class ListNodeForRemoveElements {
         val = x;
         this.next = next;
     }
-    public static String serialize(ListNode head) {
+    public static String serialize(ListNodeForAddTwoNumbers head) {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         while (head != null) {

@@ -4,9 +4,9 @@
 //You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
 public class AddTwoNumbers {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0);
-        ListNode current = dummy;
+    public ListNodeForAddTwoNumbers addTwoNumbers(ListNodeForAddTwoNumbers l1, ListNodeForAddTwoNumbers l2) {
+        ListNodeForAddTwoNumbers dummy = new ListNodeForAddTwoNumbers(0, 0);
+        ListNodeForAddTwoNumbers current = dummy;
         int carry = 0;
 
         while(l1 != null || l2 != null || carry != 0){
@@ -23,7 +23,7 @@ public class AddTwoNumbers {
             }
 
             carry = sum / 10;
-            current.next = new ListNode(sum % 10);
+            current.next = new ListNodeForAddTwoNumbers(sum % 10, 0);
             current = current.next;
         }
 
@@ -31,32 +31,32 @@ public class AddTwoNumbers {
     }
 }
 
-class ListNode {
+class ListNodeForAddTwoNumbers {
     int val;
-    ListNode next;
+    ListNodeForAddTwoNumbers next;
 
-    ListNode(int x) {
+    ListNodeForAddTwoNumbers(int x, int i) {
         this.val = x;
     }
 
-    ListNode(int val, ListNode next) {
+    ListNodeForAddTwoNumbers(int val, ListNodeForAddTwoNumbers next) {
         this.val = val;
         this.next = next;
     }
 
     // Метод который ожидает тестовая система - из строки "[2,4,3]"
-    public static ListNode deserialize(String data) {
+    public static ListNodeForAddTwoNumbers deserialize(String data) {
         // Убираем скобки и пробелы
         String clean = data.replace("[", "").replace("]", "").replace(" ", "");
         if (clean.isEmpty()) return null;
 
         String[] values = clean.split(",");
-        ListNode dummy = new ListNode(0);
-        ListNode current = dummy;
+        ListNodeForAddTwoNumbers dummy = new ListNodeForAddTwoNumbers(0, 0);
+        ListNodeForAddTwoNumbers current = dummy;
 
         for (String value : values) {
             if (!value.isEmpty()) {
-                current.next = new ListNode(Integer.parseInt(value));
+                current.next = new ListNodeForAddTwoNumbers(Integer.parseInt(value), 0);
                 current = current.next;
             }
         }
@@ -65,9 +65,9 @@ class ListNode {
     }
 
     // Метод для сериализации обратно в строку (может понадобиться для вывода)
-    public static String serialize(ListNode head) {
+    public static String serialize(ListNodeForAddTwoNumbers head) {
         StringBuilder sb = new StringBuilder("[");
-        ListNode current = head;
+        ListNodeForAddTwoNumbers current = head;
 
         while (current != null) {
             sb.append(current.val);
