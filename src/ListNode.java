@@ -4,6 +4,10 @@ public class ListNode {
     ListNode(int x) {
         val = x;
     }
+    ListNode(int x, ListNode next) {
+        val = x;
+        this.next = next;
+    }
 
     public void setNext(ListNode next) {
         this.next = next;
@@ -41,5 +45,12 @@ public class ListNode {
         }
 
         return dummy.next;
+    }
+
+    public static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + "->");
+            head = head.next;
+        }
     }
 }
