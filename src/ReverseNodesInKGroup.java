@@ -13,8 +13,7 @@ public class ReverseNodesInKGroup {
                 }
                 check = check.next;
             }
-
-
+            
             while(cur.next!=null && count<k-1){
                 ListNode next = cur.next;
                 ListNode.printList(dummy.next);
