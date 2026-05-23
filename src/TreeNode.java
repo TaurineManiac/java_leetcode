@@ -113,4 +113,73 @@ public class TreeNode {
         System.out.println(node.val);
         print(node.left, level + 1);
     }
+
+
+    public static void printRootTop(TreeNode root) {
+        if (root == null) {
+            System.out.println("(empty tree)");
+            return;
+        }
+
+        int height = root.maxDepth();               // total rows
+        int width = (1 << height) - 1;              // columns needed (2^h - 1)
+
+        String[][] tree = new String[height][width];
+        for (String[] row : tree) {
+            Arrays.fill(row, " ");
+        }
+
+        // Fill node values into the grid
+        fillTree(root, 0, 0, width - 1, tree);
+
+        // Print the tree row by row with connection slashes
+        for (int r = 0; r < height; r++) {
+            // 1) print node values in this row
+            for (int c = 0; c < width; c++) {
+                System.out.print(tree[r][c]);
+            }
+            System.out.println();
+
+            // 2) print slashes (unless it's the last row)
+            if (r < height - 1) {
+                char[] line = new char[width];
+                Arrays.fill(line, ' ');
+                for (int c = 0; c < width; c++) {
+                    if (tree[r][c].matches("\\d+")) {   // a node exists here
+                        int mid = c;
+                        // find left child in the next row (closest to the left of mid)
+                        int leftPos = -1;
+                        for (int step = 1; step <= width / (1 << (r + 1)); step++) {
+                            if (mid - step >= 0 && tree[r + 1][mid - step].matches("\\d+")) {
+                                leftPos = mid - step;
+                                break;
+                            }
+                        }
+                        // find right child
+                        int rightPos = -1;
+                        for (int step = 1; step <= width / (1 << (r + 1)); step++) {
+                            if (mid + step < width && tree[r + 1][mid + step].matches("\\d+")) {
+                                rightPos = mid + step;
+                                break;
+                            }
+                        }
+                        if (leftPos != -1) line[leftPos] = '/';
+                        if (rightPos != -1) line[rightPos] = '\\';
+                    }
+                }
+                // print the line with slashes
+                for (char ch : line) System.out.print(ch);
+                System.out.println();
+            }
+        }
+    }
+
+    // static helper to recursively fill the 2D array
+    private static void fillTree(TreeNode node, int row, int left, int right, String[][] tree) {
+        if (node == null) return;
+        int col = (left + right) / 2;
+        tree[row][col] = Integer.toString(node.val);
+        fillTree(node.left, row + 1, left, col - 1, tree);
+        fillTree(node.right, row + 1, col + 1, right, tree);
+    }
 }
