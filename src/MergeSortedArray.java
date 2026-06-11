@@ -43,10 +43,10 @@ import java.util.Arrays;
 
 public class MergeSortedArray {
     public static void main(String[] args) {
-        int[] nums1 = {0};
-        int[] nums2 = {1};
+        int[] nums1 = {1,3,5,0,0,0};
+        int[] nums2 = {2,6,8};
         SolutionOfMergeSortedArray solution = new SolutionOfMergeSortedArray();
-        solution.merge(nums1, 0, nums2, 1);
+        solution.merge(nums1, 3, nums2, 3);
 
     }
 }
